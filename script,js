@@ -1,0 +1,26 @@
+// Add event listeners to size buttons
+const sizeButtons = document.querySelectorAll('.size-button');
+sizeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const sizeOptions = button.nextElementSibling;
+        sizeOptions.style.display = sizeOptions.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+// Add event listeners to buy buttons
+const buyButtons = document.querySelectorAll('.buy-button');
+buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Add your buy now logic here
+        console.log('Buy Now button clicked!');
+    });
+});
+const sizeButton = document.querySelector('.size-button');
+const sizeOptions = document.querySelectorAll('.size-options li a');
+
+sizeOptions.forEach((option) => {
+    option.addEventListener('click', (e) => {
+        const selectedSize = e.target.getAttribute('data-size');
+        sizeButton.textContent = `Size: ${selectedSize}`;
+    });
+});

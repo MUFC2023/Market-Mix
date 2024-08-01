@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+<!-- Header section -->
+<header>
+    <nav>
+        <video autoplay loop muted id="nav-background-video">
+            <source src="Stripes.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="football kits.html" class="active">Football Kits</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Checkout form section -->
+<section class="checkout-form">
+    <h2>Checkout</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea><br><br>
+        <!-- Add a field for phone number -->
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        <!-- Add a field for product name -->
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product" readonly><br><br>
+        <!-- Size selection dropdown -->
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+            <option value="">Select Size</option>
+        </select><br><br>
+    </form>
+    <a href="https://buy.stripe.com/aEU9Dp5cD5Vd0hO7st" class="buy-button">Buy Now</a>
+</section>
+
+<script>
+    // Get the product name from the query string
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const productName = urlParams.get('product');
+
+    // Populate the product input field
+    const productInput = document.getElementById('product');
+    productInput.value = productName;
+
+    // Get the size selection dropdown
+    const sizeSelect = document.getElementById('size');
+
+    // Add size options based on product name
+    if (productName === 'Manchester United Kids Away Kit') {
+        // Kids size options
+        sizeSelect.innerHTML += `
+            <option value="6-7">6-7 years</option>
+            <option value="8-9">8-9 years</option>
+            <option value="10-11">10-11 years</option>
+            <option value="12-13">12-13 years</option>
+            <option value="14-15">14-15 years</option>
+        `;
+    } else {
+        // Adult size options
+        sizeSelect.innerHTML += `
+            <option value="S">Small</option>
+            <option value="M">Medium</option>
+            <option value="L">Large</option>
+            <option value="XL">X-Large</option>
+            <option value="XXL">XX-Large</option>
+            <option value="XXXL">XXX-Large</option>
+        `;
+    }
+</script>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2024 Football Kits and Tech Accessories</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
